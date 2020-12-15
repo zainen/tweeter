@@ -1,0 +1,18 @@
+nav {
+  height: 120px;
+  width: auto;
+  background-color: #4056A1;
+  color: #FFFFFF
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title, .initiator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}

@@ -1,0 +1,36 @@
+form {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+#tweet-text {
+  color:  black;
+  border-width: 0 0 thick 0;
+  box-sizing: content-box;  
+  background-color: transparent;
+  overflow-wrap: normal;
+}
+label {
+  background-color: transparent;
+  color: black;
+}
+
+button {
+  font-family: 'Bungee';
+  background-color: #4056A1;
+  color: #FFFFFF;
+}
+
+.poster {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}

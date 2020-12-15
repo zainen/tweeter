@@ -3,6 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+ 
 html {
   box-sizing: border-box;
 }
@@ -23,3 +24,19 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+ 
+ body, nav {
+   font-family: "Source Sans Pro";
+ }
+ 
+ span {
+   font-family: 'Bungee';
+ }
+
+ main {
+   margin-top: auto;
+   margin-left: 5%;
+   margin-right: 5%;
+   margin-bottom: auto;
+   background-color: #f4f1ec;
+ }
