@@ -1,14 +1,13 @@
 nav {
+  display: flex;
+  justify-content: space-between;
   height: 120px;
-  width: auto;
+  position: fixed;
+  top: 0px;
+  width: 100%;
   background-color: #4056A1;
   color: #FFFFFF
 }
-nav {
-  display: flex;
-  justify-content: space-between;
-}
-
 .title, .initiator {
   display: flex;
   flex-direction: column;

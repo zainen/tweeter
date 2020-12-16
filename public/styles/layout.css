@@ -19,6 +19,7 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  padding-top: 120px;
 }
 
 /*
@@ -49,16 +50,39 @@ section {
 }
 
 article {
-  height: 100px;
-  width: 90%;
-  background-color: gray;
-  border: thick;
+  height: auto;
+  padding: 20px 0;
+  border-color: #4057a16b;
+  border-style: solid;
+  border-width: thick;
+  background-color: #f4f1ec;
+}
+
+article:hover {
+  box-shadow: 5px 5px 6px #4057a16b;
+}
+
+.twit-top {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .twit-Top, .twit-Bot {
   display: flex;
-  flex-direction: column;
-  height: 10px;
+  flex-direction: row;
+  height: auto;
+  justify-content: space-between;
   background-color: #f4f1ec;
-  border: thick
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.past-Twit {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0 auto;
+  width: 98%;
+  border-bottom: thick solid #4057a16b;
 }
