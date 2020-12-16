@@ -25,18 +25,40 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
  
- body, nav {
-   font-family: "Source Sans Pro";
- }
- 
- span {
-   font-family: 'Bungee';
- }
+body, nav {
+  font-family: "Source Sans Pro";
+}
 
- main {
-   margin-top: auto;
-   margin-left: 5%;
-   margin-right: 5%;
-   margin-bottom: auto;
-   background-color: #f4f1ec;
- }
+span {
+  font-family: 'Bungee';
+}
+
+main {
+  margin-top: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: auto;
+  background-color: #f4f1ec;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin-bottom: 50px;
+}
+
+article {
+  height: 100px;
+  width: 90%;
+  background-color: gray;
+  border: thick;
+}
+
+.twit-Top, .twit-Bot {
+  display: flex;
+  flex-direction: column;
+  height: 10px;
+  background-color: #f4f1ec;
+  border: thick
+}
