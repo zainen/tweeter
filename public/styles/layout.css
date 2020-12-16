@@ -65,6 +65,8 @@ article:hover {
 .twit-top {
   display: flex;
   justify-content: flex-start;
+  height: auto;
+  background-color: #f4f1ec;
 }
 
 .twit-Top, .twit-Bot {
