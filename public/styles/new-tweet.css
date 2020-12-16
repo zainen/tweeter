@@ -13,9 +13,10 @@ h2 {
 
 #tweet-text {
   border-width: 0 0 thick 0;
+  border-color: #4057a16b;
   box-sizing: content-box;  
   background-color: transparent;
-  overflow-wrap: normal;
+  outline: none;
   color: #4056A1;
 }
 

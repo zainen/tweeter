@@ -5,9 +5,8 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #220061c2;
 }
 .profileHeader {
-  background-image: linear-gradient(#220061c2, #f4f1ec);
+  background-image: linear-gradient(#4056A1, #f4f1ec);
   
 }
