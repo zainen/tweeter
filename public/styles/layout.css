@@ -59,6 +59,11 @@ article:hover {
   box-shadow: 5px 5px 5px #4057a16b;
 }
 
+.handle:hover {
+  color: #f4f1ec;
+  text-shadow: 5px 5px #4057a16b;
+}
+
 .twit-top {
   display: flex;
   justify-content: flex-start;
