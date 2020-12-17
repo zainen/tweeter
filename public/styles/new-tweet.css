@@ -41,3 +41,15 @@ button {
   height: 40px;
   justify-content: space-between;
 }
+
+.errMsg {
+  display: none;
+  align-self: center;
+  flex-direction: column;
+  border-color: red;
+  border-style: solid;
+  border-width: thick;
+  padding: 0 2em;
+  width: 50%;
+  height: 60%;
+}

@@ -10,12 +10,6 @@ const escape =  function(str) {
   return inputSection.innerHTML;
 }
 
-const errMsg = function () {
-  const err = $(`
-  <div class="errMsg><h2>Error!</h2><p>No Text or Only spaces not allowed!<p></div>
-  `)
-}
-
 const createTweetElement = function (obj) {
     const twit = $(`
     <article>
@@ -49,7 +43,6 @@ const textEditor = (item) => {
   let newText = ''
   let count
   const newItem = item.split('%20')
-  console.log(newItem)
   const spaces = newItem.length - 1
   for (const part of newItem) {
     if (part !== '') {
@@ -76,9 +69,6 @@ $('#tweeter').submit(function(event) {
   const slicedText = test.slice(5)
   const fixText = textEditor(slicedText)
   if (fixText) {
-    // $.ajax({ url: 'http://localhost:8080/tweets',  
-    // method: 'POST', 
-    // data: $(this).serialize() })
     $.ajax({             
       method: "POST",             
       url: "/tweets/",             
@@ -89,8 +79,8 @@ $('#tweeter').submit(function(event) {
       $('#tweet-text').val('');             
     })
   } else {
-
-    alert('Cannot submit empty post or only spaces')
+    $('.errMsg').slideDown()
+    // alert('Cannot submit empty post or only spaces')
     }
   })
 })
@@ -109,9 +99,4 @@ const renderTweets = function(tweets) {
   for (const tweet of tweets) {
     $('#leTwitted').append(createTweetElement(tweet));
   }
-}
-const renderErr = function () {
-  $('#tweeter').append(errMsg)
-}
-const loadErr = function () {
 }
