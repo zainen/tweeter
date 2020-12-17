@@ -17,7 +17,7 @@ const createTweetElement = function (obj) {
     <img src="${obj.user.avatars}"/>
     ${obj.user.name}
     </b>
-    <b>${obj.user.handle}</b>
+    <b class="handle">${obj.user.handle}</b>
     </header>
     <p class="past-Twit">
     ${obj.content.text}
@@ -36,6 +36,10 @@ const renderTweets = function(tweets) {
   for (const tweet of tweets) {
     $('#leTwitted').append(createTweetElement(tweet));
   }
+}
+const renderLastTweet = function (tweets) {
+  const lastPost = tweets[tweets.length - 1]
+  $('#leTwitted').append(createTweetElement(lastPost))
 }
  
 const tweetData = {
@@ -81,9 +85,23 @@ $(function() {
 // })
 $(function() {
   console.log( "ready!" );
-  const $tweet = createTweetElement(tweetData);
-  $('#leTwitted').append($tweet);
+  $.get('/tweets', (data) => {
+    renderTweets(data)
+    // const $tweet = createTweetElement(tweetData);
+    // $('#leTwitted').append($tweet);
+  })
   // renderTweets([{"user":{"name":"Newton","avatars":"https://i.imgur.com/73hZDYK.png","handle":"@SirIsaac"},"content":{"text":"If I have seen further it is by standing on the shoulders of giants"},"created_at":1607986242409},{"user":{"name":"Descartes","avatars":"https://i.imgur.com/nlhLi3I.png","handle":"@rd"},"content":{"text":"Je pense , donc je suis"},"created_at":1608072642409},{"user":{"name":"Augusta Huisman","handle":"@MissHuisman52","avatars":"https://i.imgur.com/z5LNkkB.png"},"content":{"text":"asdf"},"created_at":1608165285756},{"user":{"name":"Phoebe Fujimoto","handle":"@MrsFujimoto","avatars":"https://i.imgur.com/lRUnDgU.png"},"content":{"text":"asdf"},"created_at":1608165329521}])
   }); 
 
-  
+const loadTweets = function () {
+
+}
+
+$(function() {
+  $('.post-twit').on('click', () => {
+    $.get('/tweets', (data) => {
+      console.log(data)
+      renderLastTweet(data)
+    })
+  })
+})
