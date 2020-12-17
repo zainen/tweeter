@@ -4,10 +4,15 @@
 //  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
 //  */
 
+const escape =  function(str) {
+  const inputSection = document.createElement('article');
+  inputSection.appendChild(document.createTextNode(str));
+  return inputSection.innerHTML;
+}
+
+
 
 const createTweetElement = function (obj) {
-  // const $tweet = $(`<article class="tweet">Hello world</article>`);
-  // return $tweet
     const twit = $(`
     <article>
     <header class="twit-Top">
@@ -18,7 +23,7 @@ const createTweetElement = function (obj) {
     <b class="handle">${obj.user.handle}</b>
     </header>
     <p class="past-Twit">
-    ${obj.content.text}
+    ${escape(obj.content.text)}
     </p>
     <footer class="twit-Bot">
     <p>
@@ -36,20 +41,33 @@ const createTweetElement = function (obj) {
 // Test / driver code (temporary)
 // console.log($tweet); // to see what it looks like
 // $('#leTwitted').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
+const textEditor = (item) => {
+  let newText = ''
+  const newItem = item.split('%20')
+  const spaces = newItem.length - 1
+  for (const part of newItem) {
+    if (part !== '') {
+      newText += part
+    }
+  }
+  if (newText.length + spaces <= 140 || newText.length > 0) {
+    return true
+  }
+}
 
 //form submit
 $(function(){
 $('#tweeter').submit(function(event) {
   event.preventDefault();
-  // const slicedText = newTweet.slice(5)
-  // const fixText = textEditor(slicedText)
-  console.log('hello')
+  const test = $('#tweeter').serialize()
+  console.log(test)
+  const slicedText = test.slice(5)
+  const fixText = textEditor(slicedText)
   console.log(event)
-  // if (fixText || fixText.length < 141) {
-    // $.ajax({ url: 'http://localhost:8080/tweets',  
-    // method: 'POST', 
-    // data: $(this).serialize() })
+  // if (textEditor(fixText)) {
+    $.ajax({ url: 'http://localhost:8080/tweets',  
+    method: 'POST', 
+    data: $(this).serialize() })
     $.ajax({             
       method: "POST",             
       url: "/tweets/",             
@@ -61,8 +79,8 @@ $('#tweeter').submit(function(event) {
     })
 
     // } else {
-      // alert('Cannot submit empty post or only spaces')
-      // }
+    //   alert('Cannot submit empty post or only spaces')
+    //   }
     })
   })
       
