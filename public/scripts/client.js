@@ -10,7 +10,11 @@ const escape =  function(str) {
   return inputSection.innerHTML;
 }
 
-
+const errMsg = function () {
+  const err = $(`
+  <div class="errMsg><h2>Error!</h2><p>No Text or Only spaces not allowed!<p></div>
+  `)
+}
 
 const createTweetElement = function (obj) {
     const twit = $(`
@@ -43,46 +47,53 @@ const createTweetElement = function (obj) {
 // $('#leTwitted').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 const textEditor = (item) => {
   let newText = ''
+  let count
   const newItem = item.split('%20')
+  console.log(newItem)
   const spaces = newItem.length - 1
   for (const part of newItem) {
     if (part !== '') {
       newText += part
     }
   }
-  if (newText.length + spaces <= 140 || newText.length > 0) {
+  if (newText.length > 0) {
+    count = newText.length + spaces
+  }
+  if (count > 0 && count <= 140) {
+    console.log(newText.length + spaces)
     return true
+  } else {
+    return false
   }
 }
+
 
 //form submit
 $(function(){
 $('#tweeter').submit(function(event) {
   event.preventDefault();
   const test = $('#tweeter').serialize()
-  console.log(test)
   const slicedText = test.slice(5)
   const fixText = textEditor(slicedText)
-  console.log(event)
-  // if (textEditor(fixText)) {
-    $.ajax({ url: 'http://localhost:8080/tweets',  
-    method: 'POST', 
-    data: $(this).serialize() })
+  if (fixText) {
+    // $.ajax({ url: 'http://localhost:8080/tweets',  
+    // method: 'POST', 
+    // data: $(this).serialize() })
     $.ajax({             
       method: "POST",             
       url: "/tweets/",             
       data: $(this).serialize() //turns form data into query string         
-    }).then(function() {             
+    })
+    .then(function() {             
       loadTweets();             
       $('#tweet-text').val('');             
-      console.log();         
     })
+  } else {
 
-    // } else {
-    //   alert('Cannot submit empty post or only spaces')
-    //   }
-    })
+    alert('Cannot submit empty post or only spaces')
+    }
   })
+})
       
 // get db tweets
 $(document).ready(function() {loadTweets()});
@@ -98,4 +109,9 @@ const renderTweets = function(tweets) {
   for (const tweet of tweets) {
     $('#leTwitted').append(createTweetElement(tweet));
   }
+}
+const renderErr = function () {
+  $('#tweeter').append(errMsg)
+}
+const loadErr = function () {
 }

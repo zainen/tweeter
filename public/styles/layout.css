@@ -85,3 +85,7 @@ article:hover {
   margin: 0 auto;
   border-bottom: thick solid #4057a16b;
 }
+
+/* @media screen and (min-width:320px) {
+  font-size: 50px;
+} */
