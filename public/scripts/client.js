@@ -1,3 +1,4 @@
+
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
@@ -32,16 +33,7 @@ const createTweetElement = function (obj) {
     `)
     return twit
 }
-const renderTweets = function(tweets) {
-  for (const tweet of tweets) {
-    $('#leTwitted').append(createTweetElement(tweet));
-  }
-}
-const renderLastTweet = function (tweets) {
-  const lastPost = tweets[tweets.length - 1]
-  $('#leTwitted').append(createTweetElement(lastPost))
-}
- 
+
 const tweetData = {
   "user": {
     "name": "Newton",
@@ -61,28 +53,37 @@ const tweetData = {
 // $('#leTwitted').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
 
+
 $(function() {
   const $button = $('.post-twit');
   $button.on('click', function(event) {
     event.preventDefault();
     console.log('button clicked: ajax time');
     const newTweet = $('form').serialize()
-    $.ajax('/tweets', { method: 'POST', data: newTweet })
-    .then(function(tweets) {
-      console.log('Success: ', tweets);
-      $('#leTwitted').append(tweets)
-    })
+    const slicedText = newTweet.slice(5)
+    const fixText = textEditor(slicedText)
+    if (fixText.length > 0) {
+      $.ajax('/tweets', { method: 'POST', data: newTweet })
+      .then(function(tweets) {
+        console.log('Success: ', tweets);
+        $('#leTwitted').append(tweets)
+      })
+    } else {
+      alert('Cannot submit empty post or only spaces')
+    }
   })
 })
 
-// $(function() {
-//   const $button = $('#post-twit')
-//   $.ajax('#leTwitted', { method: 'GET' })
-//   .then(function (index) {
-//     console.log(index)
-//     // $('#leTwitted').append(listTweets)
-//   })
-// })
+$(function() {
+  const $button = $('.post-twit');
+  $button.on('click', function(event) {
+    event.preventDefault();
+
+  })
+})
+
+
+// get db tweets
 $(function() {
   console.log( "ready!" );
   $.get('/tweets', (data) => {
@@ -91,17 +92,40 @@ $(function() {
     // $('#leTwitted').append($tweet);
   })
   // renderTweets([{"user":{"name":"Newton","avatars":"https://i.imgur.com/73hZDYK.png","handle":"@SirIsaac"},"content":{"text":"If I have seen further it is by standing on the shoulders of giants"},"created_at":1607986242409},{"user":{"name":"Descartes","avatars":"https://i.imgur.com/nlhLi3I.png","handle":"@rd"},"content":{"text":"Je pense , donc je suis"},"created_at":1608072642409},{"user":{"name":"Augusta Huisman","handle":"@MissHuisman52","avatars":"https://i.imgur.com/z5LNkkB.png"},"content":{"text":"asdf"},"created_at":1608165285756},{"user":{"name":"Phoebe Fujimoto","handle":"@MrsFujimoto","avatars":"https://i.imgur.com/lRUnDgU.png"},"content":{"text":"asdf"},"created_at":1608165329521}])
-  }); 
+}); 
 
+
+// functions
 const loadTweets = function () {
-
+  
 }
 
-$(function() {
-  $('.post-twit').on('click', () => {
-    $.get('/tweets', (data) => {
-      console.log(data)
-      renderLastTweet(data)
-    })
-  })
-})
+const renderTweets = function(tweets) {
+  for (const tweet of tweets) {
+    $('#leTwitted').append(createTweetElement(tweet));
+  }
+}
+const renderLastTweet = function (tweets) {
+  const lastPost = tweets[tweets.length - 1]
+  $('#leTwitted').append(createTweetElement(lastPost))
+}
+const textEditor = (item) => {
+  let newText = ''
+  const newItem = item.split('%20')
+  for (const part of newItem) {
+    if (part !== '') {
+      console.log(part)
+      newText += part
+    }
+  }
+  return newText
+}
+// $(function() {
+  //   $('.post-twit').on('click', () => {
+    //     $.ajax()
+    //     $.get('/tweets', (data) => {
+      //       console.log(data)
+      //       renderLastTweet(data)
+      //     })
+      //   })
+      // })

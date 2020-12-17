@@ -41,7 +41,7 @@ main {
 
 section {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   width: auto;
   margin-bottom: 50px;
 }
