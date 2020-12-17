@@ -53,6 +53,7 @@ article {
   border-style: solid;
   border-width: thick;
   background-color: #f4f1ec;
+  margin: 10px 0;
 }
 
 article:hover {
