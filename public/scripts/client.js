@@ -1,16 +1,13 @@
-
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-const listTweets = []
+// /*
+//  * Client-side JS logic goes here
+//  * jQuery is already loaded
+//  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
+//  */
 
 
 const createTweetElement = function (obj) {
   // const $tweet = $(`<article class="tweet">Hello world</article>`);
   // return $tweet
-  console.log(obj.user.name)
     const twit = $(`
     <article>
     <header class="twit-Top">
@@ -34,18 +31,6 @@ const createTweetElement = function (obj) {
     return twit
 }
 
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-    "handle": "@SirIsaac"
-  },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
-  },
-  "created_at": 1461116232227
-}
-
 // const $tweet = createTweetElement(tweetData);
 
 // Test / driver code (temporary)
@@ -53,51 +38,42 @@ const tweetData = {
 // $('#leTwitted').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
 
+//form submit
+$(function(){
+$('#tweeter').submit(function(event) {
+  event.preventDefault();
+  // const slicedText = newTweet.slice(5)
+  // const fixText = textEditor(slicedText)
+  console.log('hello')
+  console.log(event)
+  // if (fixText || fixText.length < 141) {
+    // $.ajax({ url: 'http://localhost:8080/tweets',  
+    // method: 'POST', 
+    // data: $(this).serialize() })
+    $.ajax({             
+      method: "POST",             
+      url: "/tweets/",             
+      data: $(this).serialize() //turns form data into query string         
+    }).then(function() {             
+      loadTweets();             
+      $('#tweet-text').val('');             
+      console.log();         
+    })
 
-$(function() {
-  const $button = $('.post-twit');
-  $button.on('click', function(event) {
-    event.preventDefault();
-    console.log('button clicked: ajax time');
-    const newTweet = $('form').serialize()
-    const slicedText = newTweet.slice(5)
-    const fixText = textEditor(slicedText)
-    if (fixText.length > 0) {
-      $.ajax('/tweets', { method: 'POST', data: newTweet })
-      .then(function(tweets) {
-        console.log('Success: ', tweets);
-        $('#leTwitted').append(tweets)
-      })
-    } else {
-      alert('Cannot submit empty post or only spaces')
-    }
+    // } else {
+      // alert('Cannot submit empty post or only spaces')
+      // }
+    })
   })
-})
-
-$(function() {
-  const $button = $('.post-twit');
-  $button.on('click', function(event) {
-    event.preventDefault();
-
-  })
-})
-
-
+      
 // get db tweets
-$(function() {
-  console.log( "ready!" );
-  $.get('/tweets', (data) => {
-    renderTweets(data)
-    // const $tweet = createTweetElement(tweetData);
-    // $('#leTwitted').append($tweet);
-  })
-  // renderTweets([{"user":{"name":"Newton","avatars":"https://i.imgur.com/73hZDYK.png","handle":"@SirIsaac"},"content":{"text":"If I have seen further it is by standing on the shoulders of giants"},"created_at":1607986242409},{"user":{"name":"Descartes","avatars":"https://i.imgur.com/nlhLi3I.png","handle":"@rd"},"content":{"text":"Je pense , donc je suis"},"created_at":1608072642409},{"user":{"name":"Augusta Huisman","handle":"@MissHuisman52","avatars":"https://i.imgur.com/z5LNkkB.png"},"content":{"text":"asdf"},"created_at":1608165285756},{"user":{"name":"Phoebe Fujimoto","handle":"@MrsFujimoto","avatars":"https://i.imgur.com/lRUnDgU.png"},"content":{"text":"asdf"},"created_at":1608165329521}])
-}); 
-
+$(document).ready(function() {loadTweets()});
 
 // functions
 const loadTweets = function () {
-  
+  $.get('/tweets', function(tweets) {
+    renderTweets(tweets)
+  })
 }
 
 const renderTweets = function(tweets) {
@@ -105,27 +81,3 @@ const renderTweets = function(tweets) {
     $('#leTwitted').append(createTweetElement(tweet));
   }
 }
-const renderLastTweet = function (tweets) {
-  const lastPost = tweets[tweets.length - 1]
-  $('#leTwitted').append(createTweetElement(lastPost))
-}
-const textEditor = (item) => {
-  let newText = ''
-  const newItem = item.split('%20')
-  for (const part of newItem) {
-    if (part !== '') {
-      console.log(part)
-      newText += part
-    }
-  }
-  return newText
-}
-// $(function() {
-  //   $('.post-twit').on('click', () => {
-    //     $.ajax()
-    //     $.get('/tweets', (data) => {
-      //       console.log(data)
-      //       renderLastTweet(data)
-      //     })
-      //   })
-      // })
