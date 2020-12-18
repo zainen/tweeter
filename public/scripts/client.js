@@ -63,10 +63,13 @@ $(function() {
         .then(function() {
           loadTweets();
           $('#tweet-text').val('');// clear box after successful post
+          $('.counter').val(140);//reset counter
         });
     } else {
       $('.errMsg').slideDown();
       $('#tweet-text').val(''); // clear box after error
+      $('.counter').val(140);//reset counter
+
     }
   });
 });

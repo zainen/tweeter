@@ -1,7 +1,6 @@
 $(() => {
   const $textArea = $('#tweet-text');
   const updateCount = () => {
-    // console.log($textArea.val())
     const currentCount = 140 - $textArea.val().length;
     const $counter = $('.counter');
     $counter.text(currentCount);
@@ -13,7 +12,3 @@ $(() => {
   };
   $textArea.on('keyup', updateCount);
 });
-
-// $('textarea').on('keyup', function() {
-//   const currentCount
-// })
