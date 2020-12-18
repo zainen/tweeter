@@ -44,6 +44,7 @@ button {
   align-items: flex-end;
   height: 40px;
   justify-content: space-between;
+  font-family: 'bungee';
 }
 
 .errMsg {

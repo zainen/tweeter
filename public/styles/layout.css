@@ -63,12 +63,11 @@ article:hover  {
   box-shadow: 5px 5px 5px #4057a16b;
 }
 article:hover .handle {
-  text-shadow: 5px 5px #4057a16b;
-
+  color: #4057a16b
 }
 
 .handle {
-  color: #f4f1ec;
+  color: transparent;
 }
 
 .twit-Top {
@@ -90,12 +89,12 @@ article:hover .handle {
 .past-Twit {
   margin: 0 auto;
   border-bottom: thick solid #4057a16b;
+  word-wrap: break-word;
+} 
+img {
+  background-color: rgb(255, 210, 74);
+  border-radius: 1em;
 }
-/* .container {
-  display:flex;
-  flex-direction: column-reverse;
-  flex-wrap: nowrap;
-} */
 
 @media screen and (min-width:1024px) {
 
@@ -114,4 +113,9 @@ article:hover .handle {
     align-content: flex-start;
   }
 
+}
+@media screen and (max-width: 399px) {
+  .initiator {
+    color: transparent 
+  }
 }

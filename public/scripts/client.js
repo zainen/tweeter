@@ -13,11 +13,9 @@ const escape =  function(str) {
 const createTweetElement = function (obj) {
   const postDate = obj.created_at
   const timePosted = Date.now()
-  console.log(postDate)
-  console.log(timePosted)
     const twit = $(`
     <article>
-    <header class="twit-Top">
+    <header class="twit-Top"> 
     <b>
     <img src="${obj.user.avatars}"/>
     ${obj.user.name}
@@ -31,7 +29,6 @@ const createTweetElement = function (obj) {
     <p>
     ${Math.ceil((timePosted - postDate) / 1000 / 3600 / 24)} day(s) ago
     </p>
-    
     </footer>
     </article>
     `)
@@ -55,6 +52,8 @@ const textEditor = (item) => {
   }
   if (newText.length > 0) {
     count = newText.length + spaces
+  } else {
+    return false
   }
   if (count > 0 && count <= 140) {
     console.log(newText.length + spaces)
