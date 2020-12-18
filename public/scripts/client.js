@@ -11,8 +11,8 @@ const escape =  function(str) {
 }
 
 const createTweetElement = function (obj) {
-  const postDate = obj.created_at
-  const timePosted = Date.now()
+  const postDate = obj.created_at;
+  const timePosted = Date.now();
     const twit = $(`
     <article>
     <header class="twit-Top"> 
@@ -32,7 +32,7 @@ const createTweetElement = function (obj) {
     </footer>
     </article>
     `)
-    return twit
+    return twit;
 }
 
 // const $tweet = createTweetElement(tweetData);
@@ -40,27 +40,32 @@ const createTweetElement = function (obj) {
 // Test / driver code (temporary)
 // console.log($tweet); // to see what it looks like
 // $('#leTwitted').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+// const textEditor = (item) => {
+//   let newText = '';;
+//   let count;
+//   const newItem = item.split('%20');
+//   console.log(decodeURI(item))
+//   const spaces = newItem.length - 1;
+//   for (const part of newItem) {
+//     if (part !== '') {
+//       newText += part;
+//     }
+//   }
+//   if (newText.length > 0) {
+//     count = newText.length + spaces;
+//   } else {
+//     return false;
+//   }
+//   if (count > 0 && count <= 140) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 const textEditor = (item) => {
-  let newText = ''
-  let count
-  const newItem = item.split('%20')
-  const spaces = newItem.length - 1
-  for (const part of newItem) {
-    if (part !== '') {
-      newText += part
-    }
-  }
-  if (newText.length > 0) {
-    count = newText.length + spaces
-  } else {
-    return false
-  }
-  if (count > 0 && count <= 140) {
-    console.log(newText.length + spaces)
-    return true
-  } else {
-    return false
-  }
+  const decoded = decodeURI(item)
+  const count = decoded.length
+  return (count > 0 && count <= 140 && decoded.trim().length > 0) 
 }
 
 
@@ -68,25 +73,39 @@ const textEditor = (item) => {
 $(function(){
 $('#tweeter').submit(function(event) {
   event.preventDefault();
-  const test = $('#tweeter').serialize()
-  const slicedText = test.slice(5)
-  const fixText = textEditor(slicedText)
+  const test = $('#tweeter').serialize();
+  const slicedText = test.slice(5);
+  const fixText = textEditor(slicedText);
   if (fixText) {
+    $('.errMsg').slideUp()
     $.ajax({             
       method: "POST",             
       url: "/tweets/",             
       data: $(this).serialize() //turns form data into query string         
     })
     .then(function() {             
-      loadTweets();             
-      $('#tweet-text').val('');             
+      loadTweets();        
+      $('#tweet-text').val('');// clear box after successful post         
     })
   } else {
-    $('.errMsg').slideDown()
+    $('.errMsg').slideDown();
+    $('#tweet-text').val('') // clear box after error
     // alert('Cannot submit empty post or only spaces')
     }
   })
 })
+
+$(function() {
+  $('.initiator').on('click', function(event) {
+    $('.errMsg').slideUp()
+    $('.new-tweet').slideDown()
+    $('#tweet-text').focus()
+  })
+  $('.return').on('click', function(event) {
+    window.scrollTo(0, 0)
+  })
+})
+
       
 // get db tweets
 $(document).ready(function() {loadTweets()});
@@ -94,7 +113,7 @@ $(document).ready(function() {loadTweets()});
 // functions
 const loadTweets = function () {
   $.get('/tweets', function(tweets) {
-    renderTweets(tweets)
+    renderTweets(tweets);
   })
 }
 

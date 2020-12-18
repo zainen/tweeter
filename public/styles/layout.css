@@ -70,12 +70,12 @@ article:hover .handle {
   color: transparent;
 }
 
-.twit-Top {
+/* .twit-Top {
   display: flex;
   justify-content: flex-start;
   height: auto;
   background-color: #f4f1ec;
-}
+} */
 
 .twit-Top, .twit-Bot {
   display: flex;
@@ -97,10 +97,6 @@ img {
 }
 
 @media screen and (min-width:1024px) {
-
-  main {
-    padding-right: 4em;
-  }
   .group {
     flex-direction: row;
   }
@@ -114,11 +110,10 @@ img {
   }
 
 }
+
 @media screen and (max-width: 399px) {
-  .initiator {
-    color: transparent 
-  }
-  .title {
-    align-self: center;
+  .errMsg {
+    width: 100%;
+    height: auto;
   }
 }

@@ -1,3 +1,6 @@
+.new-tweet {
+  display: none;
+}
 form {
   display: flex;
   width: auto;
@@ -57,5 +60,12 @@ button {
   padding: 0 2em;
   width: 50%;
   height: 60%;
-  margin-bottom: 1.5em; /*for my OCD*/
+  margin-bottom: 1.5em; /*for my OCD */
+}
+@media screen and (max-width: 399px) {
+
+  .errMsg {
+    width: 100%;
+    height: auto;
+  }
 }
