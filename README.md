@@ -6,10 +6,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screen Shots!
 
-!["Register now!"](https://github.com/zainen/tinyapp/blob/main/docs/Register.png)
-!["main"](https://github.com/zainen/tweeter/public/images/main.png)
-!["where-to-Tweet"](https://github.com/zainen/tweeter/public/images/where-to-Tweet.png)
-!["Phone"](https://github.com/zainen/tweeter/public/images/Phone.png)
+!["main"](https://github.com/zainen/tweeter/tree/master/public/images/main.png)
+!["where-to-Tweet"](https://github.com/zainen/tweeter/tree/master/public/images/where-to-Tweet.png)
+!["Phone"](https://github.com/zainen/tweeter/tree/master/public/images/Phone.png)
 
 
 ## Getting Started
