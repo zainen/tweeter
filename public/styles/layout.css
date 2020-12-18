@@ -70,13 +70,6 @@ article:hover .handle {
   color: transparent;
 }
 
-/* .twit-Top {
-  display: flex;
-  justify-content: flex-start;
-  height: auto;
-  background-color: #f4f1ec;
-} */
-
 .twit-Top, .twit-Bot {
   display: flex;
   flex-direction: row;
@@ -96,6 +89,22 @@ img {
   border-radius: 1em;
 }
 
+.return {
+  border-radius: 20em;
+  height: 5em;
+  width: 5em;
+  border-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background-image: linear-gradient(#4056A1, #6112bb67);
+}
+.icons img {
+  height: auto;
+  width: 1em;
+}
+
 @media screen and (min-width:1024px) {
   .group {
     flex-direction: row;
@@ -108,7 +117,6 @@ img {
     display: flex;
     align-content: flex-start;
   }
-
 }
 
 @media screen and (max-width: 399px) {

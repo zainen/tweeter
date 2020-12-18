@@ -29,6 +29,11 @@ const createTweetElement = function(obj) {
     <p>
     ${Math.ceil((timePosted - postDate) / 1000 / 3600 / 24)} day(s) ago
     </p>
+    <p class=icons>
+    <img src="/images/flagIcon.png">
+    <img src="/images/reTweet.png">
+    <img src="/images/heart.png">
+    </p>
     </footer>
     </article>
     `);
