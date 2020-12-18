@@ -10,7 +10,7 @@ $(() => {
     } else {
       $counter.removeClass('red');
     }
-  }
+  };
   $textArea.on('keyup', updateCount);
 });
 
