@@ -40,10 +40,13 @@ main {
 }
 
 section {
-  display: flex;
-  flex-direction: column-reverse;
   width: auto;
   margin-bottom: 50px;
+}
+
+#leTwitted {
+  display:flex;
+  flex-direction: column-reverse;
 }
 
 article {
@@ -56,16 +59,19 @@ article {
   margin: 10px 0;
 }
 
-article:hover {
+article:hover  {
   box-shadow: 5px 5px 5px #4057a16b;
 }
-
-.handle:hover {
-  color: #f4f1ec;
+article:hover .handle {
   text-shadow: 5px 5px #4057a16b;
+
 }
 
-.twit-top {
+.handle {
+  color: #f4f1ec;
+}
+
+.twit-Top {
   display: flex;
   justify-content: flex-start;
   height: auto;
@@ -85,7 +91,27 @@ article:hover {
   margin: 0 auto;
   border-bottom: thick solid #4057a16b;
 }
-
-/* @media screen and (min-width:320px) {
-  font-size: 50px;
+/* .container {
+  display:flex;
+  flex-direction: column-reverse;
+  flex-wrap: nowrap;
 } */
+
+@media screen and (min-width:1024px) {
+
+  /* main {
+    align-content: flex-start;
+  } */
+  .group {
+    flex-direction: row;
+  }
+  .profileHeader {
+    flex-direction: column;
+    width: 33.3%;
+  }
+  body {
+    display: flex;
+    align-content: flex-start;
+  }
+
+}

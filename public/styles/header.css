@@ -8,5 +8,16 @@ header {
 }
 .profileHeader {
   background-image: linear-gradient(#4056A1, #f4f1ec);
-  
 }
+/* 
+@media screen and (min-width: 1024px) {
+  .profileHeader {
+    display: flex;
+    flex-direction: row;
+    width: 50%
+  }
+  .group {
+    display:flex;
+    flex-direction: row;
+  }
+} */

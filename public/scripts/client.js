@@ -11,6 +11,10 @@ const escape =  function(str) {
 }
 
 const createTweetElement = function (obj) {
+  const postDate = obj.created_at
+  const timePosted = Date.now()
+  console.log(postDate)
+  console.log(timePosted)
     const twit = $(`
     <article>
     <header class="twit-Top">
@@ -25,7 +29,7 @@ const createTweetElement = function (obj) {
     </p>
     <footer class="twit-Bot">
     <p>
-    ${obj.created_at}
+    ${Math.ceil((timePosted - postDate) / 1000 / 3600 / 24)} day(s) ago
     </p>
     
     </footer>

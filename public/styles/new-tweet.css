@@ -10,6 +10,10 @@ h2 {
   display: flex;
   justify-content: center;  
 }
+#tweeter {
+  display: flex;
+  flex-direction: column;
+}
 
 #tweet-text {
   border-width: 0 0 thick 0;
@@ -19,13 +23,13 @@ h2 {
   outline: none;
   color: #4056A1;
 }
-
+/* added class if counter < 0 */
 .red {
   color: red;
 }
 
 label {
-  background-color: transparent;
+  background-color: transparent; 
   color: black;
 }
 
@@ -52,4 +56,5 @@ button {
   padding: 0 2em;
   width: 50%;
   height: 60%;
+  margin-bottom: 1.5em; /*for my OCD*/
 }

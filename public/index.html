@@ -3,6 +3,7 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
@@ -29,7 +30,7 @@
       <span class="title">tweeter</span>
       <b class="initiator">Speak now or forever hold your peace!</b>  
     </nav>
-    <header class="profileHeader">
+    <header class="profileHeader group">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
@@ -39,20 +40,20 @@
       </div>
   </header>
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main class="container group">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form id="tweeter">
+          <div class="errMsg">
+            <h2>Error!</h2> 
+            <p>Cannot post No Text or Only spaces</p>
+            <p>If you went over 140 charaters... maybe you find some more peace first.</p>
+          </div>
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="poster">
             <button type="submit" class="post-twit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-          <div class="errMsg">
-            <h2>Error!</h2>
-            <p>No Text or Only spaces not allowed!</p>
-            <p>If you went over 140 charaters... maybe you should hold your peace.</p>
           </div>
         </form>
       </section>
