@@ -6,7 +6,7 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Easter Egg
 
-figure out the meaning behind the name \u1F60F
+figure out the meaning behind the name :D
 
 ## Getting Started
 
@@ -23,6 +23,6 @@ figure out the meaning behind the name \u1F60F
 
 ## Screen Shots!
 
-!["main"](https://github.com/zainen/tweeter/tree/master/public/images/main.png)
-!["where-to-Tweet"](https://github.com/zainen/tweeter/tree/master/public/images/where-to-Tweet.png)
-!["Phone"](https://github.com/zainen/tweeter/tree/master/public/images/Phone.png)
+!["main"](https://github.com/zainen/tweeter/blob/master/docs/main.png)
+!["where-to-Tweet"](https://github.com/zainen/tweeter/blob/master/docs/where-to-Tweet.png)
+!["Phone"](https://github.com/zainen/tweeter/blob/master/docs/Phone.png)
