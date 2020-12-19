@@ -27,7 +27,7 @@ const createTweetElement = function(obj) {
     </p>
     <footer class="twit-Bot">
     <p>
-    ${Math.ceil((timePosted - postDate) / 1000 / 3600 / 24)} day(s) ago
+    ${Math.floor((timePosted - postDate) / 1000 / 3600 / 24)} day(s) ago
     </p>
     <p class=icons>
     <img src="/images/flagIcon.png">
